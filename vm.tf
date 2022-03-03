@@ -10,7 +10,6 @@ resource "azurerm_bastion_host" "oa_bastion" {
     name                = "oa-bastion"
     location            = azurerm_resource_group.oa_rsg.location
     resource_group_name = azurerm_resource_group.oa_rsg.name
-
     ip_configuration {
         name                 = "configuration"
         subnet_id            = azurerm_subnet.oa_be_bast_subnet.id
