@@ -25,16 +25,16 @@ resource "azurerm_virtual_network" "oa_gw_vnet" {
 }
 
 resource "azurerm_subnet" "oa_be_bast_subnet" {
-  name                 = "AzBastionSubnet"
+  name                 = "AzureBastionSubnet"
   resource_group_name  = azurerm_resource_group.oa_rsg.name
-  virtual_network_name = azurerm_virtual_network.oa_gw_vnet.name
+  virtual_network_name = azurerm_virtual_network.oa_be_vnet.name
   address_prefixes     = ["10.148.0.0/26"]
 }
 
 resource "azurerm_subnet" "oa_vm_subnet" {
   name                 = "oa-vm-subnet"
   resource_group_name  = azurerm_resource_group.oa_rsg.name
-  virtual_network_name = azurerm_virtual_network.oa_gw_vnet.name
+  virtual_network_name = azurerm_virtual_network.oa_be_vnet.name
   address_prefixes     = ["10.148.1.0/24"]
 }
 
