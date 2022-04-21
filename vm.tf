@@ -34,7 +34,7 @@ resource "azurerm_virtual_machine" "oa_test_vm" {
     location              = azurerm_resource_group.oa_rsg.location
     resource_group_name   = azurerm_resource_group.oa_rsg.name
     network_interface_ids = [azurerm_network_interface.oa_nic_vm1.id]
-    vm_size               = "Standard_DS1_v2"
+    vm_size               = "Standard_D2as_v5"
     delete_os_disk_on_termination = true
     storage_image_reference {
         publisher = "Canonical"
@@ -50,8 +50,8 @@ resource "azurerm_virtual_machine" "oa_test_vm" {
     }
     os_profile {
         computer_name  = "oa-test-vm"
-        admin_username = "vmadmin"
-        admin_password = "Password1234!"
+        admin_username = data.azurerm_key_vault_secret.oa_vm_admin_user.value
+        admin_password = data.azurerm_key_vault_secret.oa_vm_admin_pass.value
     }
     os_profile_linux_config {
         disable_password_authentication = false
