@@ -3,7 +3,7 @@ resource "azurerm_public_ip" "oa_gw_ip" {
   sku                 = "Standard"
   location            = azurerm_resource_group.oa_rsg.location
   resource_group_name = azurerm_resource_group.oa_rsg.name
-  allocation_method = "Static"
+  allocation_method   = "Static"
 }
 
 resource "azurerm_virtual_network_gateway" "oa_gw_vpn" {
@@ -34,10 +34,10 @@ resource "azurerm_local_network_gateway" "masergy" {
   location            = azurerm_resource_group.oa_rsg.location
   resource_group_name = azurerm_resource_group.oa_rsg.name
   gateway_address     = "64.47.160.46"
-  address_space       = ["100.64.0.100/30"]
+  address_space       = ["100.60.0.100/30"]
   bgp_settings {
     asn                 = "19855" 
-    bgp_peering_address = "100.64.0.103"  
+    bgp_peering_address = "100.60.0.101"  
   }
 }
 
