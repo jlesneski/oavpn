@@ -48,4 +48,5 @@ resource "azurerm_virtual_network_peering" "oa_be_2_gw" {
   resource_group_name       = azurerm_resource_group.oa_rsg.name
   virtual_network_name      = azurerm_virtual_network.oa_be_vnet.name
   remote_virtual_network_id = azurerm_virtual_network.oa_gw_vnet.id
+  use_remote_gateways       = true
 }
